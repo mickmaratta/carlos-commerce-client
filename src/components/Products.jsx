@@ -22,8 +22,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? `https://carloscommerce-api.onrender.com/api/products?category=${cat}`
-            : "https://carloscommerce-api.onrender.com/api/products"
+            ? `https://carloscommerce.onrender.com/https://carloscommerce-api.onrender.com/api/products?category=${cat}`
+            : "https://carloscommerce.onrender.com/https://carloscommerce-api.onrender.com/api/products"
         );
         setProducts(res.data);
       } catch (err) {console.log(err)}
