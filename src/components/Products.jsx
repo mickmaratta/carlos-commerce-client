@@ -26,7 +26,7 @@ const Products = ({ cat, filters, sort }) => {
             : "/products/"
         );
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {console.log(err)}
     };
     getProducts();
   }, [cat]);
