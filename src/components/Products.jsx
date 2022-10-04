@@ -22,8 +22,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await publicRequest.get(
           cat
-            ? `/products?category=${cat}`
-            : "/products"
+            ? `/products/?category=${cat}`
+            : "/products/"
         );
         setProducts(res.data);
       } catch (err) {}
