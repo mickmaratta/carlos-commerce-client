@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { emptyCart } from "../redux/cartSlice";
 import { userRequest } from "../requestMethods";
 import { mobile } from "../responsive";

@@ -4,6 +4,7 @@ import Product from "./Product";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   display: flex;
@@ -24,14 +25,13 @@ const ProductContainer = styled.div`
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       const cat = "featured";
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/products?category=${cat}`
+        const res = await publicRequest.get(
+          `/products?category=${cat}`
         );
         setProducts(res.data);
       } catch (err) {}
