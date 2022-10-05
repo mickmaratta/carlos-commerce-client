@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://carloscommerce-api.onrender.com/api/";
+const BASE_URL = "https://carloscommerce-api-0wb8.onrender.com/api/";
 let TOKEN;
 if(!JSON.parse(localStorage.getItem("persist:root"))) {
     TOKEN = "test"

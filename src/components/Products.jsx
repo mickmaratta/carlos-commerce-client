@@ -20,10 +20,10 @@ const Products = ({ cat, filters, sort }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(
+        const res = await publicRequest.get(
           cat
-            ? `https://carloscommerce.onrender.com/https://carloscommerce-api.onrender.com/api/products?category=${cat}`
-            : "https://carloscommerce.onrender.com/https://carloscommerce-api.onrender.com/api/products"
+            ? `/products?category=${cat}`
+            : "/products"
         );
         setProducts(res.data);
       } catch (err) {console.log(err)}
