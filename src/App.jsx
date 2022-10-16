@@ -2,6 +2,7 @@ import "./app.css"
 import Home from "./pages/Home";
 import {
   BrowserRouter as Router,
+  HashRouter,
   Routes,
   Route,
   useLocation,
@@ -25,7 +26,7 @@ function App() {
   } 
 
   return (
-    <Router>
+    <HashRouter>
       <Wrapper>
       <Routes>
           <Route path="/" element={<Home />} />
@@ -39,7 +40,7 @@ function App() {
             <Route path="success" element={<Success />} />
           </Routes>
           </Wrapper>
-    </Router>
+    </HashRouter>
     
   );
 }
