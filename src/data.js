@@ -1,21 +1,21 @@
 export const sliderItems = [
     {
         id: 1,
-        img: "slider-1.png",
+        img: "slider-1.webp",
         title: "FALL FASHION",
         desc: "PUMPKIN SPICE AND EVERYTHING NICE! CHECK OUT OUR NEWEST ARRIVALS",
         bg: "#fcf1ed"
     },
     {
         id: 2,
-        img: "slider-2.png",
+        img: "slider-2.webp",
         title: "POPULAR STYLES",
         desc: "DON'T COMPROMISE ON STYLE! GET 30% OFF OUR POPULAR ITEMS.",
         bg: "#f5fafd"
     },
     {
         id: 3,
-        img: "slider-3.png",
+        img: "slider-3.webp",
         title: "BACK TO SCHOOL FASHION",
         desc: "BE YOURSELF THIS SEMESTER",
         bg: "#fbf0f4"
