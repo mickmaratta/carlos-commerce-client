@@ -48,6 +48,7 @@ const ProductList = () => {
   const location = useLocation();
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
+  const [colors, setColors] = useState([]);
   const [cat, setCat] = useState(location.pathname.split("/")[2]);
   //
 
@@ -92,12 +93,13 @@ const ProductList = () => {
           </Select>
           <Select name="color" onChange={handleFilters}>
             <Option>Any Color</Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
+            {colors.map((color) => {
+              return (
+                color !== "" && (
+                  <Option key={color}>{color.toUpperCase()}</Option>
+                )
+              );
+            })}
           </Select>
           <Select name="size" onChange={handleFilters}>
             <Option>Any Size</Option>
@@ -118,7 +120,13 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products
+        cat={cat}
+        filters={filters}
+        sort={sort}
+        colors={colors}
+        setColors={setColors}
+      />
       <Newsletter />
       <Footer />
     </Container>

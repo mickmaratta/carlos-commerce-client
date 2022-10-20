@@ -111,6 +111,7 @@ const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 const ProductAmount = styled.div`
@@ -194,7 +195,7 @@ const Cart = () => {
   }, [stripeToken, summaryTotal, navigate, cart, dispatch]);
 
   const handleQuantity = (val, product) => {
-    if (val === "dec" && newQuantity >= 2) {
+    if (val === "dec" && newQuantity > 1) {
       setNewQuantity(newQuantity - 1);
       dispatch(
         updateProduct({
@@ -205,7 +206,7 @@ const Cart = () => {
       );
     } else if (val === "dec" && newQuantity === 1) {
       dispatch(removeProduct(product));
-    } else if (val === "inc") {
+    } else {
       setNewQuantity(newQuantity + 1);
       dispatch(
         updateProduct({

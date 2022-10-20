@@ -20,10 +20,17 @@ const cartSlice = createSlice({
             state.products[updatedProduct].quantity = action.payload.quantity;
         },
         removeProduct: (state, action) => {
-            state.products.filter(product=> product._id !== action.payload._id);
+            const index = state.products.findIndex(
+              (product) => product.id === action.payload.id
+            );
+            let newCart = [...state.products];
+            if (index >= 0) {
+              newCart.splice(index, 1);
+            }
+            state.products = newCart;
             state.quantity -= 1;
-            state.total -= action.payload.price
-        },
+            state.total -= action.payload.price;
+          },
         emptyCart: (state) => {
             state.products = [];
             state.quantity = 0;

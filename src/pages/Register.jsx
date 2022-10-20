@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { mobile } from '../responsive';
 import Navbar from '../components/Navbar'
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from '../redux/apiCalls';
+import { addUser, login } from '../redux/apiCalls';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
 `;
@@ -68,8 +69,9 @@ const Button = styled.button`
 
 const Register = () => {
     const [inputs, setInputs] = useState();
-    const {error} = useSelector(state=>state.user)
+    const {error, currentUser} = useSelector(state=>state.user)
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setInputs((prev) => {
@@ -77,10 +79,14 @@ const Register = () => {
         })
     }
 
+ 
     const handleClick = (e) => {
         e.preventDefault();
-        addUser(inputs, dispatch)
+        addUser(inputs, dispatch);
+        login(dispatch, { username: inputs.username, password: inputs.password })
     }
+
+    currentUser && navigate("/");
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import Product from './Product';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ cat, filters, sort, colors, setColors }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -32,14 +32,14 @@ const Products = ({ cat, filters, sort }) => {
   }, [cat]);
 
   useEffect(() => {
-      cat && setFilteredProducts(
+      setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
             item[key].includes(value)
           )
         )
       );
-  }, [products, cat, filters]);
+  }, [products, filters]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -57,12 +57,17 @@ const Products = ({ cat, filters, sort }) => {
     }
   }, [sort]);
 
+  useMemo(() => {
+    const newColors = products.reduce((results, item) => {
+      (results[item.color] = results[item.color] || []).push(item)
+      return results
+    }, {});
+    setColors(Object.keys(newColors))
+  }, [products, setColors])
+
   return (
     <Container>
-      {(cat)
-        ? filteredProducts.map((item) => <Product item={item} key={item._id} />)
-        : products
-            .map((item) => <Product item={item} key={item._id} />)}
+      {filteredProducts.map((item) => <Product item={item} key={item._id} />)}
     </Container>
   );
 };
